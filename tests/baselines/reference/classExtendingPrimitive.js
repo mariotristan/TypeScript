@@ -16,11 +16,10 @@ class C8 extends E { }
 
 //// [classExtendingPrimitive.js]
 // classes cannot extend primitives
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var C = (function (_super) {
     __extends(C, _super);
@@ -63,14 +62,13 @@ var C5 = (function (_super) {
     }
     return C5;
 })(Null);
-var C5a = (function () {
+var C5a = (function (_super) {
+    __extends(C5a, _super);
     function C5a() {
+        _super.apply(this, arguments);
     }
     return C5a;
-})();
-null;
-{
-}
+})(null);
 var C6 = (function (_super) {
     __extends(C6, _super);
     function C6() {

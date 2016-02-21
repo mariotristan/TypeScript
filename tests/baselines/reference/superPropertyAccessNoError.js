@@ -67,11 +67,10 @@ class SomeDerivedClass extends SomeBaseClass {
 //super.publicInstanceMemberFunction in lambda in member function
 //super.publicStaticMemberFunction in static member function of derived class
 //super.publicStaticMemberFunction in static member accessor(get and set) of derived class
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var SomeBaseClass = (function () {
     function SomeBaseClass() {
@@ -95,9 +94,7 @@ var SomeDerivedClass = (function (_super) {
         var _this = this;
         var x = _super.prototype.func.call(this);
         var x;
-        var y = function () {
-            return _super.prototype.func.call(_this);
-        };
+        var y = function () { return _super.prototype.func.call(_this); };
     };
     Object.defineProperty(SomeDerivedClass.prototype, "a", {
         get: function () {

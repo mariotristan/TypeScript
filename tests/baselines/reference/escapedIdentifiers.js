@@ -140,11 +140,9 @@ b++;
 // modules
 var moduleType1;
 (function (moduleType1) {
-    moduleType1.baz1;
 })(moduleType1 || (moduleType1 = {}));
 var moduleType\u0032;
 (function (moduleType2) {
-    moduleType2.baz2;
 })(moduleType\u0032 || (moduleType\u0032 = {}));
 moduleType1.baz1 = 3;
 moduleType\u0031.baz1 = 3;
@@ -169,21 +167,13 @@ var classType2Object1 = new classType2();
 classType2Object1.foo2 = 2;
 var classType2Object2 = new classType\u0032();
 classType2Object2.foo2 = 2;
-var interfaceType1Object1 = {
-    bar1: 0
-};
+var interfaceType1Object1 = { bar1: 0 };
 interfaceType1Object1.bar1 = 2;
-var interfaceType1Object2 = {
-    bar1: 0
-};
+var interfaceType1Object2 = { bar1: 0 };
 interfaceType1Object2.bar1 = 2;
-var interfaceType2Object1 = {
-    bar2: 0
-};
+var interfaceType2Object1 = { bar2: 0 };
 interfaceType2Object1.bar2 = 2;
-var interfaceType2Object2 = {
-    bar2: 0
-};
+var interfaceType2Object2 = { bar2: 0 };
 interfaceType2Object2.bar2 = 2;
 // arguments
 var testClass = (function () {

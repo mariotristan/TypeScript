@@ -159,11 +159,10 @@ var ccwc = new ChildClassWithoutConstructor(1, "s");
 
 
 //// [es6ClassTest2.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var BasicMonster = (function () {
     function BasicMonster(name, health) {
@@ -248,9 +247,7 @@ var SplatMonster = (function () {
     };
     return SplatMonster;
 })();
-function foo() {
-    return true;
-}
+function foo() { return true; }
 var PrototypeMonster = (function () {
     function PrototypeMonster() {
         this.age = 1;
@@ -302,10 +299,8 @@ var Visibility = (function () {
         this.x = 1;
         this.y = 2;
     }
-    Visibility.prototype.foo = function () {
-    };
-    Visibility.prototype.bar = function () {
-    };
+    Visibility.prototype.foo = function () { };
+    Visibility.prototype.bar = function () { };
     return Visibility;
 })();
 var BaseClassWithConstructor = (function () {

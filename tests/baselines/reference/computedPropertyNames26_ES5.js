@@ -5,19 +5,16 @@ class Base {
     }
 }
 class C extends Base {
-    // Gets emitted as super, not _super, which is consistent with
-    // use of super in static properties initializers.
     [
         { [super.bar()]: 1 }[0]
     ]() { }
 }
 
 //// [computedPropertyNames26_ES5.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Base = (function () {
     function Base() {
@@ -32,12 +29,7 @@ var C = (function (_super) {
     function C() {
         _super.apply(this, arguments);
     }
-    // Gets emitted as super, not _super, which is consistent with
-    // use of super in static properties initializers.
-    C.prototype[(_a = {},
-        _a[super.bar.call(this)] = 1,
-        _a)[0]] = function () {
-    };
+    C.prototype[(_a = {}, _a[_super.bar.call(this)] = 1, _a)[0]] = function () { };
     return C;
+    var _a;
 })(Base);
-var _a;

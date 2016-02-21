@@ -56,11 +56,10 @@ switch ((<T>(x: T) => '')(1)) { }
 
 
 //// [switchStatements.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var M;
 (function (M) {
@@ -81,21 +80,13 @@ switch (x) {
     case /[a-z]/:
     case []:
     case {}:
-    case {
-        id: 12
-    }:
-    case [
-        'a'
-    ]:
+    case { id: 12 }:
+    case ['a']:
     case typeof x:
     case typeof M:
     case M.fn(1):
-    case function (x) {
-        return '';
-    }:
-    case (function (x) {
-        return '';
-    })(2):
+    case function (x) { return ''; }:
+    case (function (x) { return ''; })(2):
     default:
 }
 // basic assignable check, rest covered in tests for 'assignement compatibility'
@@ -113,10 +104,7 @@ var D = (function (_super) {
 })(C);
 switch (new C()) {
     case new D():
-    case {
-        id: 12,
-        name: ''
-    }:
+    case { id: 12, name: '' }:
     case new C():
 }
 switch ('') {
@@ -139,19 +127,11 @@ switch ([]) {
 }
 switch ({}) {
 }
-switch ({
-    id: 12
-}) {
+switch ({ id: 12 }) {
 }
-switch ([
-    'a'
-]) {
+switch (['a']) {
 }
-switch (function (x) {
-    return '';
-}) {
+switch (function (x) { return ''; }) {
 }
-switch ((function (x) {
-    return '';
-})(1)) {
+switch ((function (x) { return ''; })(1)) {
 }

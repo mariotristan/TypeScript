@@ -129,38 +129,37 @@ var obj = { n: super.wat, p: super.foo() };
 
 
 //// [errorSuperPropertyAccess.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 //super property access in constructor of class with no base type
 //super property access in instance member function of class with no base type
 //super property access in instance member accessor(get and set) of class with no base type
 var NoBase = (function () {
     function NoBase() {
-        this.m = super.prototype;
-        this.n = super.hasOwnProperty.call(this, '');
-        var a = super.prototype;
-        var b = super.hasOwnProperty.call(this, '');
+        this.m = _super.prototype.prototype;
+        this.n = _super.prototype.hasOwnProperty.call(this, '');
+        var a = _super.prototype.prototype;
+        var b = _super.prototype.hasOwnProperty.call(this, '');
     }
     NoBase.prototype.fn = function () {
-        var a = super.prototype;
-        var b = super.hasOwnProperty.call(this, '');
+        var a = _super.prototype.prototype;
+        var b = _super.prototype.hasOwnProperty.call(this, '');
     };
     //super static property access in static member function of class with no base type
     //super static property access in static member accessor(get and set) of class with no base type
     NoBase.static1 = function () {
-        super.hasOwnProperty.call(this, '');
+        _super.hasOwnProperty.call(this, '');
     };
     Object.defineProperty(NoBase, "static2", {
         get: function () {
-            super.hasOwnProperty.call(this, '');
+            _super.hasOwnProperty.call(this, '');
             return '';
         },
         set: function (n) {
-            super.hasOwnProperty.call(this, '');
+            _super.hasOwnProperty.call(this, '');
         },
         enumerable: true,
         configurable: true
@@ -172,14 +171,10 @@ var SomeBase = (function () {
         this.privateMember = 0;
         this.publicMember = 0;
     }
-    SomeBase.prototype.privateFunc = function () {
-    };
-    SomeBase.prototype.publicFunc = function () {
-    };
-    SomeBase.privateStaticFunc = function () {
-    };
-    SomeBase.publicStaticFunc = function () {
-    };
+    SomeBase.prototype.privateFunc = function () { };
+    SomeBase.prototype.publicFunc = function () { };
+    SomeBase.privateStaticFunc = function () { };
+    SomeBase.publicStaticFunc = function () { };
     SomeBase.privateStaticMember = 0;
     SomeBase.publicStaticMember = 0;
     return SomeBase;
@@ -210,12 +205,10 @@ var SomeDerived1 = (function (_super) {
     });
     SomeDerived1.prototype.fn2 = function () {
         function inner() {
-            super.publicFunc.call(this);
+            _super.publicFunc.call(this);
         }
         var x = {
-            test: function () {
-                return super.publicFunc.call(this);
-            }
+            test: function () { return _super.publicFunc.call(this); }
         };
     };
     return SomeDerived1;
@@ -277,7 +270,4 @@ var SomeDerived3 = (function (_super) {
     return SomeDerived3;
 })(SomeBase);
 // In object literal
-var obj = {
-    n: super.wat,
-    p: super.foo.call(this)
-};
+var obj = { n: _super.wat, p: _super.foo.call(this) };

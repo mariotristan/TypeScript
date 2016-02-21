@@ -1,18 +1,17 @@
 //// [symbolDeclarationEmit2.ts]
 class C {
-    [Symbol.isRegExp] = "";
+    [Symbol.toPrimitive] = "";
 }
 
 //// [symbolDeclarationEmit2.js]
-var C = (function () {
-    function C() {
-        this[Symbol.isRegExp] = "";
+class C {
+    constructor() {
+        this[Symbol.toPrimitive] = "";
     }
-    return C;
-})();
+}
 
 
 //// [symbolDeclarationEmit2.d.ts]
 declare class C {
-    [Symbol.isRegExp]: string;
+    [Symbol.toPrimitive]: string;
 }

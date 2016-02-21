@@ -103,11 +103,10 @@ var s = new fn5((n) => n.substr(0));
 
 
 //// [overloadResolutionConstructors.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var SomeBase = (function () {
     function SomeBase() {
@@ -177,9 +176,5 @@ new fn4(null, null); // Error
 new fn4(true, null); // Error
 new fn4(null, true); // Error
 var fn5;
-var n = new fn5(function (n) {
-    return n.toFixed();
-});
-var s = new fn5(function (n) {
-    return n.substr(0);
-});
+var n = new fn5(function (n) { return n.toFixed(); });
+var s = new fn5(function (n) { return n.substr(0); });

@@ -17,11 +17,10 @@ class C5 extends foo { } // error
 class C6 extends []{ } // error
 
 //// [classExtendsEveryObjectType.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var C = (function (_super) {
     __extends(C, _super);
@@ -30,13 +29,13 @@ var C = (function (_super) {
     }
     return C;
 })(I); // error
-var C2 = (function () {
+var C2 = (function (_super) {
+    __extends(C2, _super);
     function C2() {
+        _super.apply(this, arguments);
     }
     return C2;
-})();
-{
-} // error
+})({ foo: string }); // error
 var x;
 var C3 = (function (_super) {
     __extends(C3, _super);
@@ -56,8 +55,7 @@ var C4 = (function (_super) {
     }
     return C4;
 })(M); // error
-function foo() {
-}
+function foo() { }
 var C5 = (function (_super) {
     __extends(C5, _super);
     function C5() {
@@ -65,11 +63,10 @@ var C5 = (function (_super) {
     }
     return C5;
 })(foo); // error
-var C6 = (function () {
+var C6 = (function (_super) {
+    __extends(C6, _super);
     function C6() {
+        _super.apply(this, arguments);
     }
     return C6;
-})();
-[];
-{
-} // error
+})([]); // error

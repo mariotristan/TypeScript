@@ -63,11 +63,10 @@ class Foo4 extends Foo {
 }
 
 //// [collisionSuperAndParameter.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Foo = (function () {
     function Foo() {
@@ -75,17 +74,13 @@ var Foo = (function () {
     Foo.prototype.a = function () {
         var _this = this;
         var lamda = function (_super) {
-            return function (x) {
-                return _this;
-            }; // New scope.  So should inject new _this capture
+            return function (x) { return _this; }; // New scope.  So should inject new _this capture
         };
     };
     Foo.prototype.b = function (_super) {
         var _this = this;
         var lambda = function () {
-            return function (x) {
-                return _this;
-            }; // New scope.  So should inject new _this capture
+            return function (x) { return _this; }; // New scope.  So should inject new _this capture
         };
     };
     Object.defineProperty(Foo.prototype, "c", {
@@ -108,17 +103,13 @@ var Foo2 = (function (_super) {
     Foo2.prototype.x = function () {
         var _this = this;
         var lamda = function (_super) {
-            return function (x) {
-                return _this;
-            }; // New scope.  So should inject new _this capture
+            return function (x) { return _this; }; // New scope.  So should inject new _this capture
         };
     };
     Foo2.prototype.y = function (_super) {
         var _this = this;
         var lambda = function () {
-            return function (x) {
-                return _this;
-            }; // New scope.  So should inject new _this capture
+            return function (x) { return _this; }; // New scope.  So should inject new _this capture
         };
     };
     Object.defineProperty(Foo2.prototype, "z", {
@@ -137,9 +128,7 @@ var Foo4 = (function (_super) {
     Foo4.prototype.y = function (_super) {
         var _this = this;
         var lambda = function () {
-            return function (x) {
-                return _this;
-            }; // New scope.  So should inject new _this capture
+            return function (x) { return _this; }; // New scope.  So should inject new _this capture
         };
     };
     return Foo4;

@@ -21,11 +21,14 @@ tests/services/baselines/local/*
 tests/baselines/prototyping/local/*
 tests/baselines/rwc/*
 tests/baselines/test262/*
+tests/baselines/reference/projectOutput/*
+tests/baselines/local/projectOutput/*
 tests/services/baselines/prototyping/local/*
 tests/services/browser/typescriptServices.js
+scripts/configureNightly.js
 scripts/processDiagnosticMessages.d.ts
 scripts/processDiagnosticMessages.js
-scripts/importDefinitelyTypedTests.js
+scripts/importDefinitelyTypedTests/importDefinitelyTypedTests.js
 src/harness/*.js
 rwc-report.html
 *.swp
@@ -42,6 +45,9 @@ scripts/run.bat
 scripts/word2md.js
 scripts/ior.js
 scripts/*.js.map
+scripts/typings/
 coverage/
 internal/
 **/.DS_Store
+.settings/*
+!.settings/tasks.json

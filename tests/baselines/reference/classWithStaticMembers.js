@@ -20,26 +20,20 @@ var r2 = r.x;
 var r3 = r.foo;
 
 //// [classWithStaticMembers.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var C = (function () {
     function C(a, b) {
         this.a = a;
         this.b = b;
     }
-    C.fn = function () {
-        return this;
-    };
+    C.fn = function () { return this; };
     Object.defineProperty(C, "x", {
-        get: function () {
-            return 1;
-        },
-        set: function (v) {
-        },
+        get: function () { return 1; },
+        set: function (v) { },
         enumerable: true,
         configurable: true
     });

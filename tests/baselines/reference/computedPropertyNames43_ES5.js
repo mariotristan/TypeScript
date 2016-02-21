@@ -13,11 +13,10 @@ class D extends C {
 }
 
 //// [computedPropertyNames43_ES5.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Foo = (function () {
     function Foo() {
@@ -41,15 +40,12 @@ var D = (function (_super) {
     }
     Object.defineProperty(D.prototype, "get1", {
         // Computed properties
-        get: function () {
-            return new Foo;
-        },
+        get: function () { return new Foo; },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(D.prototype, "set1", {
-        set: function (p) {
-        },
+        set: function (p) { },
         enumerable: true,
         configurable: true
     });

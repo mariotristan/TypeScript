@@ -9,11 +9,10 @@ class B extends A {
 }
 
 //// [captureThisInSuperCall.js]
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var A = (function () {
     function A(p) {
@@ -24,13 +23,8 @@ var B = (function (_super) {
     __extends(B, _super);
     function B() {
         var _this = this;
-        _super.call(this, {
-            test: function () {
-                return _this.someMethod();
-            }
-        });
+        _super.call(this, { test: function () { return _this.someMethod(); } });
     }
-    B.prototype.someMethod = function () {
-    };
+    B.prototype.someMethod = function () { };
     return B;
 })(A);
